@@ -24,6 +24,12 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
+router.post('/sign-up', function(req, res, next){
+  
+  console.log("/////////", req.body)
+  res.render('login')
+})
+
 router.get('/home', function(req, res, next) {
   res.render('ticketac', { title: 'Express' });
 });
