@@ -31,8 +31,16 @@ router.post('/sign-up', function(req, res, next){
 })
 
 router.get('/home', function(req, res, next) {
-  res.render('ticketac', { title: 'Express' });
+
+  res.render('ticketac');
 });
+
+// router.get('/train-list', async function(req, res, next){
+//   var journeyList = await journeyModel.findOne(req.body.trainFromFromFront, req.body.trainToFromFront);
+//   console.log("journeyList😩😩😩😩", journeyList);
+
+//   res.render('ticketac');
+// });
 
 
 // Remplissage de la base de donnée, une fois suffit
