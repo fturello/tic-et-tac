@@ -3,6 +3,7 @@ var router = express.Router();
 
 const mongoose = require('mongoose');
 var connect = require('../models/connection');
+var usersModel = require('../models/users');
 
 var journeySchema = mongoose.Schema({
   departure: String,
@@ -24,11 +25,51 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
-router.post('/sign-up', function(req, res, next){
+router.post('/sign-up', async function(req,res,next){
+
+    console.log("5555555555", req.body)
+    var newUser = new usersModel({
+      username: req.body.usernameFromFront,
+      email: req.body.emailFromFront,
+      password: req.body.passwordFromFront,
+    })
+    console.log("8888888888888", newUser)
   
-  console.log("/////////", req.body)
-  res.render('login')
-})
+    var newUserSave = await newUser.save();
+  
+    req.session.user = {
+      name: newUserSave.username,
+      id: newUserSave._id,
+    }
+  
+    console.log(req.session.user)
+  
+    res.render('/home',)
+});
+
+router.post('/sign-in', async function(req,res,next){
+
+  var searchUser = await usersModel.findOne({
+    email: req.body.emailFromFront,
+    password: req.body.passwordFromFront
+  })
+  console.log("666666666", searchUser)
+
+  if(searchUser!= null){
+    req.session.user = {
+      name: searchUser.usernameFromFront,
+      id: searchUser._id
+    }
+    console.log("000000000", req.session.user)
+    res.redirect('/home')
+  } else {
+    res.render('/')
+  }
+
+  
+});
+
+
 
 router.get('/home', function(req, res, next) {
 
