@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const mongoose = require('mongoose');
+const { render } = require('../app');
 var connect = require('../models/connection');
 var usersModel = require('../models/users');
 
@@ -44,7 +45,7 @@ router.post('/sign-up', async function(req,res,next){
   
     console.log(req.session.user)
   
-    res.render('/home',)
+    res.redirect('/home',)
 });
 
 router.post('/sign-in', async function(req,res,next){
@@ -69,8 +70,6 @@ router.post('/sign-in', async function(req,res,next){
   
 });
 
-
-
 router.get('/home', function(req, res, next) {
 
   res.render('ticketac');
@@ -83,6 +82,12 @@ router.post('/tickets', async function(req, res, next){
 
   res.render('tickets');
 });
+
+router.get('/lasttrips', function(req, res, next){
+  
+
+  res.render('lasttrips')
+})
 
 
 // Remplissage de la base de donnée, une fois suffit
