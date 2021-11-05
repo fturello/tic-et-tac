@@ -67,8 +67,9 @@
     <div class="container">
       <div class="row">
         <div class="col-8 offset-2 mt-3" style="height:40vh;">
+            <% if(journeyList.length > 0){
 
-            <%for(var i=0; i<journeyList.length; i++){%>
+                for(var i=0; i<journeyList.length; i++){%>
                 <div class="card mt-3">
                     <div class="card-body d-flex justify-content-between">
                         <h4 class="card-title"><%= journeyList[i].departure%>/ <%= journeyList[i].arrival%></h4>
@@ -81,7 +82,12 @@
                         <a href="#" class="btn btn-primary">OK</a>
                     </div>
                 </div>
-            <%}%>
+                          
+            <%}
+            
+            }else {
+                %><h2 class="text-center text-white mt-3">😞😞😭 No train available...</h2><%
+            }%>
 
         </div>
       </div>

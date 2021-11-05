@@ -85,8 +85,14 @@ router.post('/tickets', async function(req, res, next){
 
 router.get('/lasttrips', function(req, res, next){
   
-
+  
   res.render('lasttrips')
+})
+
+router.get('/mytickets', function(req, res, next){
+  
+
+  res.render('mytickets')
 })
 
 
