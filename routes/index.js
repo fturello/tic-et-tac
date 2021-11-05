@@ -63,7 +63,7 @@ router.post('/sign-in', async function(req,res,next){
     console.log("000000000", req.session.user)
     res.redirect('/home')
   } else {
-    res.render('/')
+    res.redirect('/')
   }
 
   
