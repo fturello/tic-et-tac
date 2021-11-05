@@ -83,7 +83,10 @@ router.post('/tickets', async function(req, res, next){
   res.render('tickets', {journeyList});
 });
 
-router.get('/lasttrips', function(req, res, next){
+router.get('/lasttrips', async function(req, res, next){
+  console.log("1111222222233333",req.query)
+  var myLastTrips = await journeyModel.find({departure: req.body.departure, arrival: req.body.arrival, date: req.body.date});
+  console.log("BRR BRR BRR", myLastTrips)
   
 
   res.render('lasttrips')
