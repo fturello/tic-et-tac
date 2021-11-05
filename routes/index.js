@@ -81,7 +81,7 @@ router.post('/tickets', async function(req, res, next){
   var journeyList = await journeyModel.find({departure: req.body.departure, arrival: req.body.arrival, date: req.body.date});
   console.log("/////journeyList🤬🤬🤬🤬", journeyList);
 
-  res.render('tickets');
+  res.render('tickets', {journeyList});
 });
 
 
