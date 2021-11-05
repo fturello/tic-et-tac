@@ -17,3 +17,7 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+.mb-2 {
+  border-radius: 18 px;
+}

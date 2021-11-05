@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 router.post('/sign-up', function(req, res, next){
   
   console.log("/////////", req.body)
-  res.render('login')
+  res.render('login') 
 })
 
 router.get('/home', function(req, res, next) {
@@ -35,12 +35,13 @@ router.get('/home', function(req, res, next) {
   res.render('ticketac');
 });
 
-// router.get('/train-list', async function(req, res, next){
-//   var journeyList = await journeyModel.findOne(req.body.trainFromFromFront, req.body.trainToFromFront);
-//   console.log("journeyList😩😩😩😩", journeyList);
+router.post('/tickets', async function(req, res, next){
+  console.log("--------", req.body)
+  var journeyList = await journeyModel.find({departure: req.body.departure, arrival: req.body.arrival, date: req.body.date});
+  console.log("/////journeyList🤬🤬🤬🤬", journeyList);
 
-//   res.render('ticketac');
-// });
+  res.render('tickets');
+});
 
 
 // Remplissage de la base de donnée, une fois suffit
